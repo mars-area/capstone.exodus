@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Smart Fruits</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        <h1>{% block title %} Smart Fruits {% endblock %}</h1>
+        <span>This is .. image</span><br>
+        <span>It's contain:</span>
+    {% endblock %}
+</body>
+</html>
