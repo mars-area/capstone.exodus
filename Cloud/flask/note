@@ -1,1 +1,2 @@
 activate the environment by running source env/bin/activate (Linux/macOS) or env\Scripts\Activate.ps1 (Windows).
+ctrl + shift + ` (open new terminal then activate the virtual environment)

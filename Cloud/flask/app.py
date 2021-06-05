@@ -19,9 +19,11 @@ def allowed_file(filename):
 # Route
 # Homepage
 @app.route('/')
+@app.route('/index.html')
 def index():
     return render_template('index.html')
 
+# homepage when user upload
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
