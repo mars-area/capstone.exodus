@@ -1,0 +1,9 @@
+# API
+kaggle datasets download -d chrisfilo/fruit-recognition
+
+# Cloud Storage
+from google.cloud import storage
+storage_client = storage.Client(project='YOUR PROJECT ID')
+
+# copy folder fruit-recognition to bucket fruit-recognition
+gsutil -m cp -r fruit-recognition gs://fruit-recognition
