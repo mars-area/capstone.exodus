@@ -46,6 +46,21 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return render_template('result.html')
 
+@app.route('/model.json', methods=['GET'])
+def modeljson():
+    modelname = 'model.json'
+    return send_from_directory('tf_js', modelname)
+
+@app.route('/dict.txt', methods=['GET'])
+def dict():
+    dicttxt = 'dict.txt'
+    return send_from_directory('tf_js', dicttxt)
+
+@app.route('/group1-shard1of1.bin', methods=['GET'])
+def group():
+    groupbin = 'group1-shard1of1.bin'
+    return send_from_directory('tf_js', groupbin)
+
 # accessing uploaded files
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
