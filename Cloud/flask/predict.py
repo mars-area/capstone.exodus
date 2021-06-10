@@ -1,35 +1,25 @@
-from google.cloud import automl
+import sys
 
-# TODO(developer): Uncomment and set the following variables
-project_id = "capstone-exodus"
-model_id = "ICN4502515508905508864"
-file_path = ".\dummy_images\Apple dee04161.png"
+from google.cloud import automl_v1beta1
+from google.cloud.automl_v1beta1.proto import service_pb2
 
-prediction_client = automl.PredictionServiceClient()
 
-# Get the full path of the model.
-model_full_id = automl.AutoMlClient.model_path(project_id, "us-central1", model_id)
+# 'content' is base-64-encoded image data.
+def get_prediction(content, project_id, model_id):
+  prediction_client = automl_v1beta1.PredictionServiceClient()
 
-# Read the file.
-with open(file_path, "rb") as content_file:
-    content = content_file.read()
+  name = 'projects/{}/locations/us-central1/models/{}'.format(project_id, model_id)
+  payload = {'image': {'image_bytes': content }}
+  params = {}
+  request = prediction_client.predict(name, payload, params)
+  return request  # waits till request is returned
 
-image = automl.Image(image_bytes=content)
-payload = automl.ExamplePayload(image=image)
+if __name__ == '__main__':
+  file_path = sys.argv[1]
+  project_id = sys.argv[2]
+  model_id = sys.argv[3]
 
-# params is additional domain-specific parameters.
-# score_threshold is used to filter the result
-# https://cloud.google.com/automl/docs/reference/rpc/google.cloud.automl.v1#predictrequest
-params = {"score_threshold": "0.8"}
+  with open(file_path, 'rb') as ff:
+    content = ff.read()
 
-request = automl.PredictRequest(name=model_full_id, payload=payload, params=params)
-
-response = prediction_client.predict(request=request)
-print("Prediction results:")
-for result in response.payload:
-    print("Predicted class name: {}".format(result.display_name))
-    print("Predicted class score: {}".format(result.image_object_detection.score))
-    bounding_box = result.image_object_detection.bounding_box
-    print("Normalized Vertices:")
-    for vertex in bounding_box.normalized_vertices:
-        print("\tX: {}, Y: {}".format(vertex.x, vertex.y))
+  print(get_prediction(content, project_id, model_id))
