@@ -5,9 +5,9 @@ I make model from AutoML, then serve the result in flask
 
 the model is pretty good, some ss from testing model
 
-![apple](./img/apple.jpg)
-![banana](./img/banana.jpg)
-![tomat](./img/ptomat.jpg)
+![apple](./Cloud/flask/img/apple.jpg)
+![banana](./Cloud/flask/img/banana.jpg)
+![tomat](./Cloud/flask/img/ptomat.jpg)
 
 the problem is how to serve the payload in web app and user can insert input themself. So, I make app engine, the end-point given below.
 
