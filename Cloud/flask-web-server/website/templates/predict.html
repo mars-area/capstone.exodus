@@ -1,28 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>This is the predictions page</h1>
+<h1>Welcome to predictions page</h1>
+<p>Here you can know what you can predict what fruit in the image.</p>
+<p>please make sure that your file have .png; .jpg; or .jpeg extention</p>
+
 <form method=post enctype=multipart/form-data>
     <label for="image">Insert your image: </label>
     <input type="file" name="file">
     <input type="submit" value="Upload">
 </form>
-
-<img src="{{ url_for('static', filename=value)}}" />
-<!-- <img id="fruit" crossorigin="anonymous" src="../dummy_images/Apple.png">
+<br>
+<img id='get_prediction' crossorigin="anonymous" src="{{ url_for('static', filename=value)}}" class="img-thumbnail" alt="thumbnail"/>
+<br>
+{% if value != 'uploads/default.png' %}
+<button type="button" class="btn btn-light" onclick="run()">Predict</button> 
 <script src="https://unpkg.com/@tensorflow/tfjs@3.7.0/dist/tf.min.js"></script>
 <script src="https://unpkg.com/@tensorflow/tfjs-automl@1.2.0/dist/tf-automl.min.js"></script>
 <script>
     async function run() {
         const model = await tf.automl.loadImageClassification('model.json');
-        const image = document.getElementById('fruit');
+        const image = document.getElementById('get_prediction');
         const predictions = await model.classify(image);
         console.log(predictions);
         // Show the resulting object on the page.
         const pre = document.createElement('pre');
         pre.textContent = JSON.stringify(predictions, null, 2);
         document.body.append(pre);
+        alert('prediksi selesai');
     }
-    run();
-</script> -->
-
+</script>
+{% endif %}
 {% endblock %}

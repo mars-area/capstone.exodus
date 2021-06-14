@@ -42,4 +42,5 @@ def upload_file():
             flash('Allowed file types are png, jpg, and jpeg', category='error')
         print('file:', file)
         print('filename:', filename)
+    # render templates and send value 
     return render_template('predict.html', value='uploads' + '/' + filename)

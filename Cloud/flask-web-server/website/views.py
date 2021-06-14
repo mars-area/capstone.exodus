@@ -6,7 +6,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    return render_template('home.html')
+    return redirect('/get_prediction', code=302)
 
 @views.route('/about')
 def about():
