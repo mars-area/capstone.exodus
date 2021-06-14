@@ -7,10 +7,10 @@ app=Flask(__name__)
 
 app.secret_key = "secret key" # for encrypting the session
 #It will allow below 16MB contents only, you can change it
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 
-path = os.getcwd()
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+path = os.getcwd() # '/home/c0060585' change on cloud
 # file Upload
-UPLOAD_FOLDER = os.path.join(path,'website', 'static', 'uploads')
+UPLOAD_FOLDER = os.path.join(path, 'myproject','app', 'flask-web-server','website', 'static', 'uploads')
 
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
