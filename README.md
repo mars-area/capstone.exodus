@@ -13,5 +13,5 @@ the problem is how to serve the payload in web app and user can insert input the
 
 # end-point
 https://flask-vision.uc.r.appspot.com/
-
-still have error.
+or
+http://34.101.195.222/
