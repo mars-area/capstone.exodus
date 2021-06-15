@@ -1,17 +1,17 @@
 # SMART FRUIT
+![S-FRUIT](./Cloud/flask-web-server/website/static/uploads/default.png)
+## What i do
+I create machine learning model from AutoML, then serve the result in web.
 
-# what i do
-I make model from AutoML, then serve the result in flask
+The model is pretty good, some ss from testing model
 
-the model is pretty good, some ss from testing model
+![apple](./Cloud/asset/img/apple.jpg)
+![banana](./Cloud/asset/img/banana.jpg)
+![tomat](./Cloud/asset/img/ptomat.jpg)
 
-![apple](./Cloud/flask/img/apple.jpg)
-![banana](./Cloud/flask/img/banana.jpg)
-![tomat](./Cloud/flask/img/ptomat.jpg)
+The problem is how to serve the payload in web app and user can insert input themself. So, I create a web, the end-point given below.
 
-the problem is how to serve the payload in web app and user can insert input themself. So, I make app engine, the end-point given below.
+The web using flask.
+## end-point
 
-# end-point
-https://flask-vision.uc.r.appspot.com/
-or
 http://34.101.195.222/
