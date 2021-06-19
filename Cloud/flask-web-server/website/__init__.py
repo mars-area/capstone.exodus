@@ -2,7 +2,8 @@ import os
 from flask import Flask
 
 def create_app():
-    app = Flask(__name__)
+    # static_url_path='/static' use for passing image from folder static to html
+    app = Flask(__name__, static_url_path='/static')
     app.config['SECRET_KEY'] = 'secretkeyforcapstonebangkit21'
 
     from .views import views

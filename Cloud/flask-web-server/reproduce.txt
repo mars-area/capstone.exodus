@@ -1,0 +1,41 @@
+sudo apt update
+sudo apt install nginx
+
+sudo apt install python3-pip -y
+sudo pip3 instal -U virtualenv
+virtualenv -p python3 venv on project folder
+source venv/bin/activate
+
+Regardless of which version of Python you are using, when the virtual environment is activated, you should use the pip command (not pip3).
+
+sudo apt install git
+
+create script run_flask.sh
+sudo nano /home/myproject/app/flask-web-server/run_flask.sh
+inside file run_flask.sh
+FLASK_APP=/home/myproject/app/flask-web-server/main.py flask run
+
+run
+/bin/bash ${HOME}/myproject/app/flask-web-server/run_flask.sh
+/bin/bash /home/myproject/app/flask-web-server/run_flask.sh
+
+automated
+sudo nano /etc/systemd/system/flask.service
+inside
+ [Unit]
+ Description=Flask Service
+ After=network.target
+
+ [Service]
+ User=c0060585
+ WorkingDirectory=/home/c0060585/myproject/app/flask-web-server
+ ExecStart=python3 main.py
+
+ [Install]
+ WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl start flask
+sudo systemctl stop flask
+sudo systemctl restart flask
+sudo systemctl status flask

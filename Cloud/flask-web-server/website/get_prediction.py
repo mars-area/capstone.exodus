@@ -10,7 +10,7 @@ app.secret_key = "secret key" # for encrypting the session
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 path = os.getcwd() # '/home/c0060585' change on cloud
 # file Upload
-UPLOAD_FOLDER = os.path.join(path, 'myproject','app', 'flask-web-server','website', 'static', 'uploads')
+UPLOAD_FOLDER = os.path.join(path,'website', 'static', 'uploads')
 
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
@@ -40,7 +40,5 @@ def upload_file():
             # return redirect('/')
         else:
             flash('Allowed file types are png, jpg, and jpeg', category='error')
-        print('file:', file)
-        print('filename:', filename)
     # render templates and send value 
     return render_template('predict.html', value='uploads' + '/' + filename)

@@ -8,20 +8,41 @@
     <title>{% block title %}Home{% endblock %}</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="/">S-Fruit</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse navstyle" id="navbarTogglerDemo03"">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" id="home" href="/">Home</a>
-                    <a class="nav-item nav-link" id="about" href="/about">About</a>
-                    <a class="nav-item nav-link" id="predict" href="/get_prediction">Predict</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/get_prediction">AI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="/#" tabindex="-1" aria-disabled="true">Login</a>
+                    </li>
+                </ul>
+                <!-- <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
             </div>
         </div>
-    </nav>
+        </nav>
+    
+        
+    </header>
+
+    
     
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -57,13 +78,19 @@
         {% endfor %}
     {% endif %}
     {% endwith %}
+    
+    <!-- Content -->
+    {% block content %}
+        <!-- call extended file -->
+    {% endblock %}
 
-    <div class="container containersytle">
-        {% block content %}
-            <!-- call extended file -->
-        {% endblock %}
-    </div>
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2021 Mars-Area, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
 
+    <!-- Script -->
     <script
     type="text/javascript"
     src="{{ url_for('static', filename='index.js')}}"
