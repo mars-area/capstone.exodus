@@ -14,6 +14,7 @@ async function run() {
     //console.log('label: ' + fruit1.label)
     //console.log('prob: ' + fruit1.prob)
     // Show the resulting object on the page.
+    const result = document.querySelector('.container')
     const pre = document.createElement('pre');
     // Insert class
     pre.className += 'container result';
@@ -33,7 +34,7 @@ async function run() {
         console.log('I believe ' + hasil + '% ' + 'This is a ' + fruit3.label);
         pre.innerHTML = 'I believe ' + hasil.toFixed(2) + '% ' + 'This is ' + fruit3.label
     }
-    document.body.append(pre);
+    result.append(pre);
     alert('prediksi selesai');
     return dataPrediction
 }

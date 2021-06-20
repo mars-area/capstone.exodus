@@ -1,27 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Welcome to predictions page</h1>
-<p>Here you can predict what fruit in the image.
-    <br>Please make sure that your file have .png; .jpg; or .jpeg extention.
-    <br>So this is the prototype, currently support apple, banana, and tomatoes.
-    <br>Make sure that your image is meet our app need. Thank you for participate.
-</p>
-<br>
-<form method=post enctype=multipart/form-data>
-    <label for="image">Insert your image (2 MB max): </label>
-    <input type="file" name="file">
-    <input type="submit" value="Upload">
-</form>
-<br>
-<img id='get_prediction' crossorigin="anonymous" src="{{ url_for('static', filename=value)}}" class="img-thumbnail" alt="thumbnail"/>
-<br>
-{% if value != 'uploads/default.png' %}
-    <button type="button" class="btn btn-light" onclick="run()">Predict</button> 
-    <script src="https://unpkg.com/@tensorflow/tfjs@3.7.0/dist/tf.min.js"></script>
-    <script src="https://unpkg.com/@tensorflow/tfjs-automl@1.2.0/dist/tf-automl.min.js"></script>
-    <script
-        type="text/javascript"
-        src="{{ url_for('static', filename='predict.js')}}"
-    ></script>
-{% endif %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col attention">
+                <h1>Welcome to predictions page</h1>
+                <p>Here you can predict what fruit in the image.
+                    <br>Please make sure that your file have .png; .jpg; or .jpeg extention.
+                    <br>So this is the prototype, currently support apple, banana, and tomatoes.
+                    <br>Make sure that your image is meet our app need. Thank you for participate.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col attention">
+                <form method=post enctype=multipart/form-data>
+                    <label for="image">Insert your image (2 MB max): </label>
+                    <input type="file" name="file">
+                    <input type="submit" value="Upload">
+                </form>
+                <br>
+                <img id='get_prediction' crossorigin="anonymous" src="{{ url_for('static', filename=value)}}" class="img-thumbnail" alt="thumbnail"/>
+                <br>
+                {% if value != 'uploads/default.png' %}
+                    <button type="button" class="btn btn-light" onclick="run()">Predict</button> 
+                    <script src="https://unpkg.com/@tensorflow/tfjs@3.7.0/dist/tf.min.js"></script>
+                    <script src="https://unpkg.com/@tensorflow/tfjs-automl@1.2.0/dist/tf-automl.min.js"></script>
+                    <script
+                        type="text/javascript"
+                        src="{{ url_for('static', filename='predict.js')}}"
+                    ></script>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

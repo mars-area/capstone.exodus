@@ -12,6 +12,14 @@ body {
 h1, h2 {
     font-weight: 600;
 }
+.attention {
+    padding: 1em;
+    text-align: center;
+}
+.result {
+    padding: 1em;
+    text-align: center;
+}
   
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
